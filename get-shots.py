@@ -28,8 +28,8 @@ for level in levels:
     lines[0] = level[1] + " \n"
     lines[1] = level[2] + " \n"
     lines[2] = level[0] + " \n"
-    lines[4] = "70.8009 \n"
-    lines[5] = "105.026 \n"
+    lines[4] = "1000.8009 \n"
+    lines[5] = "500.026 \n"
     with open("/home/jdavis/.local/share/Steam/steamapps/compatdata/1123450/pfx/drive_c/users/steamuser/Local Settings/Application Data/paintdog/save/_playdata","w") as f:
         f.writelines(lines)
     mouse.position = continue_button
@@ -39,8 +39,10 @@ for level in levels:
     mouse.release(Mouse.Button.left)
     mouse.position = (1920,0)
     time.sleep(0.7)
-    keyboard.tap("r")
-    time.sleep(3)
+    #keyboard.tap("r")
+    time.sleep(2)
+    #keyboard.tap("r")
+    time.sleep(1.5)
     im = ImageGrab.grab()
     im.save(f"screenshots/{'_'.join(level)}.png")
     keyboard.tap(Keyboard.Key.esc)
