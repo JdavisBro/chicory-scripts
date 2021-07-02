@@ -3,3 +3,5 @@ screenshots/
 solutions/
 oldscreenshots/
 .vscode
+out.json
+level_data

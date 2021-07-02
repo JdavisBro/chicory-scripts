@@ -10,8 +10,15 @@ levels = list(level_data.keys())
 with open("levels.json","w+") as f:
     json.dump(sorted(levels),f)
 
+# for i in level_data.keys():
+#     level_data[i]["area"] = "none"
+
 for i in level_data.keys():
-    level_data[i]["area"] = "none"
+    if "objects" in level_data[i].keys():
+        for i2, _ in enumerate(level_data[i]["objects"]):
+            if "attached_object" in level_data[i]["objects"][i2].keys():
+                level_data[i]["objects"][i2].pop("attached_object")
+                print(level_data[i]["objects"][i2])
 
 with open("level_data","w+") as f:
     json.dump(level_data,f)
