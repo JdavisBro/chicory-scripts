@@ -12,12 +12,24 @@ continue_button = (1741, 808)
 mouse = Mouse.Controller()
 keyboard = Keyboard.Controller()
 
-levels = []
+saveFolder = "potluck"
 
-with open("levels.json") as f:
-    levels += json.load(f)
+os.makedirs(saveFolder,exist_ok=True)
 
-existing_shots = os.listdir("screenshots")
+if os.path.exists("screenShotScreens.txt"):
+    with open("screenShotScreens.txt") as f:
+        levels = f.read().split("\n")
+        levels.remove("")
+        existing_shots = []
+else:
+    with open("levels.json") as f:
+        levels = json.load(f)
+        existing_shots = os.listdir(saveFolder)
+
+with open("_stitch.py") as f:
+    stitcher = f.read()
+with open(f"{saveFolder}/_stitch.py","w+") as f:
+    f.write(stitcher)
 
 for level in levels:
     if level + ".png" in existing_shots:
@@ -39,12 +51,11 @@ for level in levels:
     mouse.release(Mouse.Button.left)
     mouse.position = (1920,0)
     time.sleep(0.7)
-    #keyboard.tap("r")
     time.sleep(2)
-    #keyboard.tap("r")
+    keyboard.tap("r")
     time.sleep(1.5)
     im = ImageGrab.grab()
-    im.save(f"screenshots/{'_'.join(level)}.png")
+    im.save(f"{saveFolder}/{'_'.join(level)}.png")
     keyboard.tap(Keyboard.Key.esc)
     time.sleep(0.2)
     for _ in range(4):
