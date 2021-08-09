@@ -12,11 +12,22 @@ continue_button = (1741, 808)
 mouse = Mouse.Controller()
 keyboard = Keyboard.Controller()
 
-levels = os.listdir("failures/get_shots_myself")
+with open("levels.json") as f:
+    levels = json.load(f)
+    existing_shots = os.listdir("screenshots")
+
+with open("_stitch.py") as f:
+    stitcher = f.read()
+with open(f"screenshots/_stitch.py","w+") as f:
+    f.write(stitcher)
 
 for level in levels:
-    level = level[:-4]
+    if level + ".png" in existing_shots:
+        continue
+    level = level
     level = level.split("_")
+    if not len(level) > 2:
+        continue
     with open("/home/jdavis/.local/share/Steam/steamapps/compatdata/1123450/pfx/drive_c/users/steamuser/Local Settings/Application Data/paintdog/save/_playdata","r") as f:
         lines = f.readlines()
     lines[0] = level[1] + " \n"
@@ -32,7 +43,6 @@ for level in levels:
     time.sleep(0.1)
     mouse.release(Mouse.Button.left)
     time.sleep(0.7)
-    keyboard.tap("r")
     time.sleep(2)
     def on_press(key):
         if key == Keyboard.Key.shift_r:

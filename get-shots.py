@@ -12,7 +12,7 @@ continue_button = (1741, 808)
 mouse = Mouse.Controller()
 keyboard = Keyboard.Controller()
 
-saveFolder = "potluck"
+saveFolder = "screenshots"
 
 os.makedirs(saveFolder,exist_ok=True)
 
