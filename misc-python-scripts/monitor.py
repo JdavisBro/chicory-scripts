@@ -7,6 +7,8 @@ from watchdog.events import FileSystemEventHandler, FileModifiedEvent
 
 savepath = "/home/jdavis/.wine/drive_c/users/jdavis/Local Settings/Application Data/paintdog/save/_playdata"
 
+savepath = "/home/jdavis/.local/share/Steam/steamapps/compatdata/1123450/pfx/drive_c/users/steamuser/Local Settings/Application Data/paintdog/save/_playdata"
+
 with open(savepath) as f:
     old = json.loads(f.readlines()[3])
 
@@ -24,7 +26,7 @@ class EventHandle(FileSystemEventHandler):
             old = new
         except:
             pass
-
+        
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO,
                         format='%(asctime)s - %(message)s',
