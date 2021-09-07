@@ -1,9 +1,3 @@
-failures/
-screenshots/
-solutions/
-oldscreenshots/
 .vscode
-out.json
-level_data
-potluck/
-entrances.json
+paint-format/out*
+map-screenshotter/*/
