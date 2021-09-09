@@ -7,14 +7,16 @@ and also the geo format found in level_data (for custom levels!)
 
 py on windows, else python3
 
+[make sure pillow is installed](https://pillow.readthedocs.io/en/stable/installation.html#basic-installation)
+
 `py draw_data.py SCREEN`
 
 screen should be something like 0_1_2
+
 LAYER_X_Y
 it should find your save and level_data,
-if it's in a different place than it normally is
-use things
-add `-h` on it to get help
+
+if it's in a different place than it normally is add `-h` on the command to get help
 
 
 ### CUSTOM LEVEL:
