@@ -1,0 +1,67 @@
+0 = base ground -- DARK GREEN
+1 = ramp -- YELLOW
+2 = non climable wall -- DARK BROWN
+3 = climbable wall -- PINK
+4 = sky/see through wall -- GREY
+5 = non walkable ground -- BRIGHT RED
+6 = water -- DARK BLUE
+7 = ?? (could not find it)
+8 = grub(most) and underground rooms with gifts top layer?? layer 9? -- less dark green
+9 = ?? layer 8? (could not find it) -- less dark blue
+a = cave and tent top layer OR layer 7 -- less dark blue
+b = layer 6 ground -- dark blue
+c = layer 5 ground -- less dark green 
+d = layer 4 ground -- less dark green
+e = layer 3 ground -- less dark green
+f = layer 2 ground -- less dark green than base?
+
+ground typing??
+
+the pixel before one of the above will be a ground type, those are
+
+0 = anything that isn't a layer
+
+f = other layer
+
+same color maps apply
+
+-- figure out what 7 and 9 are (probably more layers, check if you can jump from them to lower and to them from lower)
+-- figure out exacts on 8 and a, are they just more layers? or are they specific to those areas
+
+color code mappings:
+
+0 = #062100
+1 = #fcff42
+2 = #543800
+3 = #ff94f4
+4 = #b5b5b5
+5 = #FF0000
+6 = #005f85
+7 = #00fcb9
+8 = #00e6a8
+9 = #00bf8c
+a = #00966e
+b = #005740
+c = #2df200
+d = #27d400
+e = #1d9c00
+f = #105700
+
+ORDER ON SAMPLE IMAGE
+
+wall
+climable wall
+ground
+layer 2
+3
+4
+5
+6
+7
+8
+9
+and 10 ig
+ramp
+non walkable ground
+water
+sky

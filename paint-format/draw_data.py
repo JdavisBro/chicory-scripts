@@ -7,6 +7,7 @@ import sys
 import zlib
 
 from PIL import Image
+from PIL.ImageColor import getrgb
 
 # Install pillow and
 # Run this from command line:
@@ -18,6 +19,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("screen",help="The screen to turn into an image.")
 parser.add_argument("-p","--paint",help="Save image of your paint.",action="store_true")
 parser.add_argument("-g","--geo",help="Save image of geo.",action="store_true")
+parser.add_argument("-a","--actual-geo",help="Export actual geo and not smaller",action="store_true")
 parser.add_argument("-s","--save",help="Location of your _playdata file.")
 parser.add_argument("-l","--level-data",help="Location of your level_data file.")
 args = parser.parse_args()
@@ -53,8 +55,18 @@ else:
         levelDataLocation = os.path.expanduser(args.level_data)
 
 if GEO:
-    size = (81,46)
-    palette = {}
+    if args.actual_geo:
+        size = (162,46)
+    else:
+        size = (81,46)
+    palette = {
+        0: getrgb("#062100"), 1: getrgb("#fcff42"), 2: getrgb("#543800"),
+        3: getrgb("#ff94f4"), 4: getrgb("#b5b5b5"), 5: getrgb("#FF0000"),
+        6: getrgb("#005f85"), 7: getrgb("#00fcb9"), 8: getrgb("#00e6a8"),
+        9: getrgb("#00bf8c"), 10: getrgb("#00966e"), 11: getrgb("#005740"),
+        12: getrgb("#2df200"), 13: getrgb("#27d400"), 14: getrgb("#1d9c00"),
+        15: getrgb("#105700")
+    }
 
     with open(levelDataLocation) as f:
         levelData = json.loads(f.read())
@@ -69,7 +81,7 @@ else:
     with open("palettes.json") as f:
         palettes = json.load(f)
 
-    palette = {}
+    palette = {0: (0,0,0)}
     i = 0
 
     for p in palettes:
@@ -101,6 +113,8 @@ else:
     if args.screen in extras:
         palette[15] = tuple(extras[screen])
 
+import chardet
+
 allpaint = zlib.decompress(base64.b64decode(allpaint)).hex()
 
 paintlist = [[]]
@@ -124,17 +138,17 @@ i = 0
 x = 0
 for colorlist in paintlist:
     for color in colorlist:
-        if GEO:
+        color = int(color,base=16)
+        if GEO and not args.actual_geo:
             x += 1
             if x % 2 != 0:
                 continue
-        if int(color,base=16) > 0:
-            if int(color,base=16) in palette:
-                imData[i] = palette[int(color,base=16)]
-            else:
-                random.seed(color)
-                imData[i] = (random.randint(0,255),random.randint(0,255),random.randint(0,255))
-                random.seed()
+        if color in palette:
+            imData[i] = palette[color]
+        else:
+            random.seed(color)
+            imData[i] = (random.randint(0,255),random.randint(0,255),random.randint(0,255))
+            random.seed()
         i += 1
 
 os.makedirs("out",exist_ok=True)

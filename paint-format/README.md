@@ -17,6 +17,42 @@ use things
 add `-h` on it to get help
 
 
+### CUSTOM LEVEL:
+
+to make a custom level first install python 3.6+ and pillow.
+
+run
+
+`py draw_data.py -g SCREEN`
+
+screen should be a screen as something like `1_2_3` or `LAYER_X_Y`
+
+this should ouput the geo for "SCREEN" at out/SCREEN.geo.png
+
+you can edit that or use a new 81x46 file.
+
+open the color-example.png file and pick color to get the colors for the type of terrain.
+
+
+THIS is the order:
+`wall, climable wall, ground, layer 2, 3, 4, 5, 6, 7, 8, 9, 10, ramp, non walkable ground, water, sky`
+higher layer numbers can jump to lower but not the other way around
+ramps and climable walls allow you to go across layers
+sky is basically a transparent wall that will show the sky if an objSky is in the level
+
+now once you're done editing, save your file
+
+Next i'd recommend you create a copy of your chicory install. This'll be at C:/Program Files (x86)/Steam/steamapps/ and copy the Chicory A Colorful Tale folder into this one. Now run 
+
+
+`py image_to_geo.py -l LEVEL FILE`
+
+where file is the file you just saved, this will edit the level_data file in your copied chicory install, now run the Chicory.exe inside that install and go to your edited screen.
+
+#### WARNING
+it will use your normal save file so i'd recommend backing that up just to be safe.
+
+
 ## How to
 
 I DID IT I DID IT
