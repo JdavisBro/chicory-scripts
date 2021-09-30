@@ -1,4 +1,8 @@
 .vscode
 paint-format/out*
 map-screenshotter/*/
-**/Chicory A Colorful Tale
+**/PC
+paint-format/imagemap/*.png
+paint-format/imagemap/*.jpg
+**/_playdata
+geo-render/

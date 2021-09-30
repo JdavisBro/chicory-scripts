@@ -113,8 +113,6 @@ else:
     if args.screen in extras:
         palette[15] = tuple(extras[screen])
 
-import chardet
-
 allpaint = zlib.decompress(base64.b64decode(allpaint)).hex()
 
 paintlist = [[]]
