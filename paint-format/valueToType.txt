@@ -3,7 +3,7 @@
 2 = non climable wall -- DARK BROWN
 3 = climbable wall -- PINK
 4 = sky/see through wall -- GREY
-5 = non walkable ground -- BRIGHT RED
+5 = "prop" wall (non walkable ground) -- BRIGHT RED
 6 = water -- DARK BLUE
 7 = ?? (could not find it)
 8 = grub(most) and underground rooms with gifts top layer?? layer 9? -- less dark green
